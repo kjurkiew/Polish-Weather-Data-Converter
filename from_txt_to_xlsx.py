@@ -4,7 +4,7 @@ import xlsxwriter
 
 
 def taking_cities():
-    # Finding all files in directory, and taking their names
+    # Finding all files in directory, and taking their names 
     cities = []
     for filename in os.listdir('nowe_miasta/'):
         cities.append(filename)
