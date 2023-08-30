@@ -5,24 +5,21 @@ import xlsxwriter
 
 def taking_cities():
     # Finding all files in directory, and taking their names 
-    cities = []
-    for filename in os.listdir('nowe_miasta/'):
-        cities.append(filename)
+   cities = [filename for filename in os.listdir('nowe_miasta/')]
     return cities
 
 
 def opening_file(file_name):
     # Opening and reading file
-    file = open('nowe_miasta/' + file_name, 'r')
-    city_data = file.read()
-    file.close()
+    with open('nowe_miasta/' + file_name, 'r') as file:
+        city_data = file.read()
     return city_data
 
 
 def find_values(city_data):
     # Values are separated by space, using regex to find all values
-    values = re.findall('-*\w\S*', city_data)
-    return values
+    values = re.findall(r'-*\w\S*', city_data)
+    return [float(value) for value in values]
 
 
 def creating_lines(values):
